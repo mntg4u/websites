@@ -8,20 +8,22 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background: linear-gradient(to bottom right, #4facfe, #00f2fe);
+            color: #333;
         }
 
         header {
-            background-color: #333;
-            color: #fff;
+            background: #282c34;
+            color: #ffffff;
             padding: 1em 0;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         nav {
@@ -29,17 +31,19 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            background-color: #444;
+            background: #20232a;
         }
 
         nav a {
             text-decoration: none;
-            color: white;
+            color: #61dafb;
             padding: 1em;
+            font-weight: 600;
+            transition: color 0.3s ease;
         }
 
         nav a:hover {
-            background-color: #555;
+            color: #ffffff;
         }
 
         .container {
@@ -55,40 +59,90 @@
         }
 
         .feature-card {
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
             padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
         }
 
         .feature-card h3 {
             margin-top: 0;
+            font-size: 1.5rem;
         }
 
         .feature-card p {
-            color: #666;
+            color: #555;
+            font-size: 1rem;
+        }
+
+        .feature-card iframe {
+            width: 100%;
+            border: none;
+            height: 300px;
+            margin-top: 10px;
+            border-radius: 5px;
+            overflow: hidden;
         }
 
         footer {
-            background-color: #333;
+            background: #282c34;
             color: white;
             text-align: center;
             padding: 1em 0;
-            margin-top: 20px;
+            margin-top: 40px;
         }
 
-        iframe {
-            width: 100%;
-            border: 1px solid #ccc;
-            height: 400px;
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
         }
 
         .terminal {
-            background-color: #2d2d2d;
+            background-color: #1e1e1e;
             color: #0f0;
-            font-family: monospace;
-            padding: 15px;
-            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-y: auto;
+            height: 300px;
+            line-height: 1.6;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            gap: 15px;
+        }
+
+        ul li {
+            margin: 10px;
+        }
+
+        ul a {
+            text-decoration: none;
+            color: #61dafb;
+            font-weight: 500;
+        }
+
+        ul a:hover {
+            color: white;
         }
     </style>
 </head>
