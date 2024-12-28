@@ -1,24 +1,188 @@
-<!doctype html>
-<html lang=en>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset=UTF-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<title>TeraBox Video Downloader</title>
-<style>body{font-family:Arial,sans-serif;background:linear-gradient(to bottom right,#6200ea,#b388ff,#03a9f4);margin:0;padding:0;text-align:center;color:#333;animation:backgroundShift 8s infinite alternate}header{background:linear-gradient(to right,#6200ea,#03a9f4);color:#fff;padding:1.5em 0;box-shadow:0 4px 6px rgba(0,0,0,.2);animation:fadeIn 2s ease-in-out}header h1{margin:0;font-size:2.5rem;text-shadow:0 3px 6px rgba(0,0,0,.4)}main{margin:2em auto;max-width:600px;padding:2em;background:linear-gradient(to bottom,#fff,#e3f2fd);box-shadow:0 4px 8px rgba(0,0,0,.2);border-radius:12px;animation:fadeIn 1.5s ease-in-out}input[type=url]{width:100%;padding:1em;margin:1em 0;border:2px solid #6200ea;border-radius:6px;font-size:1rem;transition:box-shadow .3s ease,border-color .3s ease}input[type=url]:focus{outline:0;box-shadow:0 0 12px rgba(98,0,234,.8);border-color:#03a9f4}button{background:linear-gradient(to right,#6200ea,#03a9f4);color:#fff;border:none;padding:.8em 2em;border-radius:6px;cursor:pointer;font-size:1rem;transition:background .3s ease,transform .2s;box-shadow:0 3px 6px rgba(0,0,0,.2)}button:hover{background:linear-gradient(to right,#03a9f4,#6200ea);transform:scale(1.1)}button:active{transform:scale(.95)}iframe{width:100%;height:300px;border:none;margin-top:1em;border-radius:8px;display:none;animation:slideDown .5s ease-in-out}@keyframes fadeIn{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}@keyframes slideDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}@keyframes backgroundShift{0%{background:linear-gradient(to bottom right,#6200ea,#b388ff,#03a9f4)}100%{background:linear-gradient(to bottom right,#03a9f4,#b388ff,#6200ea)}}</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Downloader with Quality Selection</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            text-align: center;
+            padding: 50px 0;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #0073e6;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1s ease-in-out;
+        }
+
+        input, select, button {
+            padding: 12px;
+            margin: 10px;
+            border: 2px solid #0073e6;
+            border-radius: 8px;
+            font-size: 1.2em;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input:focus, select:focus, button:hover {
+            border-color: #005bb5;
+            box-shadow: 0 0 8px rgba(0, 91, 181, 0.4);
+        }
+
+        button {
+            background-color: #0073e6;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            animation: buttonAnimation 0.5s ease-out;
+        }
+
+        button:active {
+            background-color: #005bb5;
+        }
+
+        .message {
+            font-size: 1.1em;
+            margin-top: 20px;
+            color: #0073e6;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes buttonAnimation {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
 </head>
 <body>
-<header>
-<h1>TeraBox Video Downloader</h1>
-</header>
-<main>
-<p>Enter the TeraBox video link below to download or watch the video:</p>
-<input type=url id=videoUrl placeholder="Enter TeraBox video link here" aria-label="Video URL input" required>
-<div>
-<button onclick=downloadVideo()>Download</button>
-<button onclick=watchVideo()>Watch</button>
-</div>
-<iframe id=videoFrame></iframe>
-</main>
-<script>const downloadApiUrl="https://teraboxvideodownloader.nepcoderdevs.workers.dev/?url=",watchApiUrl="https://opabhik.serv00.net/Watch.php?url=";function downloadVideo(){const e=document.getElementById("videoUrl").value;e?window.open(`${downloadApiUrl}${encodeURIComponent(e)}`,"_blank"):alert("Please enter a valid TeraBox video link.")}function watchVideo(){const e=document.getElementById("videoUrl").value;if(!e)return void alert("Please enter a valid TeraBox video link.");const o=document.getElementById("videoFrame");o.style.display="block",o.src=`${watchApiUrl}${encodeURIComponent(e)}`}</script>
+
+    <h1>YouTube Video Downloader</h1>
+
+    <div class="container">
+        <input type="text" id="videoUrl" placeholder="Enter YouTube URL" />
+        <select id="qualitySelect">
+            <option value="bestvideo">Best Video</option>
+            <option value="1080p">1080p</option>
+            <option value="720p">720p</option>
+            <option value="480p">480p</option>
+            <option value="360p">360p</option>
+            <option value="240p">240p</option>
+        </select>
+        <button onclick="downloadVideo()">Download</button>
+        <div id="statusMessage" class="message"></div>
+    </div>
+
+    <script>
+        function downloadVideo() {
+            var url = document.getElementById("videoUrl").value;
+            var messageElement = document.getElementById("statusMessage");
+
+            // Check if the URL is valid (basic check)
+            if (!url.includes("youtube.com")) {
+                messageElement.textContent = "Invalid YouTube URL. Please check the URL.";
+                messageElement.style.color = "red";
+                return;
+            }
+
+            // Display loading message
+            messageElement.textContent = "Processing... Please wait!";
+            messageElement.style.color = "orange";
+
+            // Create a hidden iframe to load the YouTube player
+            var iframe = document.createElement("iframe");
+            iframe.style.display = "none";
+            document.body.appendChild(iframe);
+
+            // Load the YouTube player API in the iframe
+            iframe.src = "https://www.youtube.com/embed/" + getVideoId(url) + "?enablejsapi=1";
+
+            // Function to get the video ID from the YouTube URL
+            function getVideoId(url) {
+                var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+                var match = url.match(regExp);
+                return (match && match[2].length === 11) ? match[2] : null;
+            }
+
+            // YouTube Player API ready event listener
+            window.onYouTubeIframeAPIReady = function () {
+                // Create a YouTube player instance
+                var player = new YT.Player(iframe, {
+                    events: {
+                        'onReady': onPlayerReady
+                    }
+                });
+
+                function onPlayerReady(event) {
+                    // Get video information (e.g., title, available qualities)
+                    event.target.getVideoData().then(function (videoData) {
+                        var chosenQuality = document.getElementById("qualitySelect").value;
+
+                        // Download the video in the chosen quality
+                        download(videoData.title, getVideoId(url), chosenQuality);
+                    });
+                }
+            };
+
+            // Load the YouTube Player API script
+            var tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        }
+
+        // ** Placeholder for the download function (you need to implement this) **
+        function download(title, videoId, quality) {
+            console.log("Downloading: " + title + " in " + quality + " quality");
+
+            // Simulate download process (this is just a placeholder for actual logic)
+            setTimeout(function () {
+                var messageElement = document.getElementById("statusMessage");
+                messageElement.textContent = `Download of "${title}" in ${quality} quality complete!`;
+                messageElement.style.color = "green";
+            }, 3000); // Simulating download time
+        }
+    </script>
+
 </body>
 </html>
